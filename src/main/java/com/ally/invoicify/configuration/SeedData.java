@@ -1,7 +1,6 @@
 package com.ally.invoicify.configuration;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.ally.invoicify.models.Company;
@@ -22,17 +21,18 @@ public class SeedData {
 		Company ajax = companyRepository.save(new Company("AJAX Ltd."));
 		Company lomax = companyRepository.save(new Company("Lomax Brothers, LLC"));
 
-		recordRepository.save(new FlatFeeBillingRecord(300, "Faxes", ajax, admin));
-		recordRepository.save(new FlatFeeBillingRecord(1.75, "Socks", ajax, admin));
-		recordRepository.save(new FlatFeeBillingRecord(500, "Paper", lomax, admin));
-		recordRepository.save(new FlatFeeBillingRecord(72.33, "Stockings", lomax, admin));
-		recordRepository.save(new FlatFeeBillingRecord(142.99, "Paint", lomax, admin));
+		
 
-		recordRepository.save(new RateBasedBillingRecord(500, 3.5, "Legal services", ajax, admin));
-		recordRepository.save(new RateBasedBillingRecord(150, 2.5, "Painting", ajax, admin));
-		recordRepository.save(new RateBasedBillingRecord(100, 4.25, "House cleaning", ajax, admin));
-		recordRepository.save(new RateBasedBillingRecord(700, 8, "Palm reading", lomax, admin));
-		recordRepository.save(new RateBasedBillingRecord(1.57, 25, "Show shining", lomax, admin));
+		recordRepository.save(new FlatFeeBillingRecord(300, "Faxes", ajax, admin, "unpaid", "08/10/2019"));
+		recordRepository.save(new FlatFeeBillingRecord(1.75, "Socks", ajax, admin, "unpaid", "07/25/2019"));
+		recordRepository.save(new FlatFeeBillingRecord(500, "Paper", lomax, admin, "unpaid", "08/10/2019"));
+		recordRepository.save(new FlatFeeBillingRecord(72.33, "Stockings", lomax, admin, "unpaid", "09/17/2019"));
+		recordRepository.save(new FlatFeeBillingRecord(142.99, "Paint", lomax, admin, "unpaid", "10/12/2019"));
+
+		recordRepository.save(new RateBasedBillingRecord(500, 3.5, "Legal services", ajax, admin, "unpaid", "08/05/2019"));
+		recordRepository.save(new RateBasedBillingRecord(150, 2.5, "Painting", ajax, admin, "unpaid", "07/28/2019"));
+		recordRepository.save(new RateBasedBillingRecord(100, 4.25, "House cleaning", ajax, admin , "unpaid","09/22/2019"));
+		recordRepository.save(new RateBasedBillingRecord(700, 8, "Palm reading", lomax, admin, "unpaid", "07/31/2019"));
+		recordRepository.save(new RateBasedBillingRecord(1.57, 25, "Show shining", lomax, admin, "unpaid","09/12/2019"));
 	}
-
 }
