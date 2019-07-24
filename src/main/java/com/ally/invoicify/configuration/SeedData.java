@@ -15,7 +15,7 @@ import com.ally.invoicify.repositories.UserRepository;
 public class SeedData {
 
 	public SeedData(BillingRecordRepository recordRepository, CompanyRepository companyRepository,
-			UserRepository userRepository, PasswordEncoder encoder) throws Exception {
+			UserRepository userRepository, PasswordEncoder encoder) {
 		User admin = userRepository.save(new User("admin", encoder.encode("admin")));
 
 		Company ajax = companyRepository.save(new Company("AJAX Ltd."));
