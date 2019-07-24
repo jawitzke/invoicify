@@ -1,8 +1,5 @@
 package com.ally.invoicify.models;
 
-import java.sql.Date;
-import java.util.Calendar;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,14 +27,20 @@ public abstract class BillingRecord {
 	
 	@ManyToOne
 	private Company client;
+
+	private String status;
+	private String dueDate;
 	
 	public BillingRecord() {}
 	
-	public BillingRecord(String description, Company client, User createdBy) {
+	public BillingRecord(String description, Company client, User createdBy, String status, String dueDate) {
 		this();
 		this.description = description;
 		this.client = client;
 		this.setCreatedBy(createdBy);
+		this.status=status;
+		this.dueDate=dueDate;
+
 	}
 	
 	public abstract double getTotal();
@@ -80,6 +83,22 @@ public abstract class BillingRecord {
 
 	public void setClient(Company client) {
 		this.client = client;
+	}
+
+	public String getStatus(){
+		return status;
+	}
+
+	public void setStatus(String status){
+		this.status=status;
+	}
+
+	public String getDueDate(){
+		return dueDate;
+	}
+
+	public void setDueDate(String dueDate){
+		this.dueDate=dueDate;
 	}
 	
 }
