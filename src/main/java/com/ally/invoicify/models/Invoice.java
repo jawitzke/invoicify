@@ -29,6 +29,8 @@ public class Invoice {
 	private User createdBy;
 	
 	private String invoiceDescription;
+
+	private String dueDate;
 	
 	@JsonManagedReference(value="secondParent")
 	@OneToMany(mappedBy="invoice", cascade=CascadeType.ALL)
@@ -80,6 +82,14 @@ public class Invoice {
 
 	public void setLineItems(List<InvoiceLineItem> lineItems) {
 		this.lineItems = lineItems;
+	}
+
+	public String getDueDate(){
+		return dueDate;
+	}
+
+	public void setDueDate(String dueDate){
+		this.dueDate=dueDate;
 	}
 	
 }
