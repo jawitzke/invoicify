@@ -3,8 +3,10 @@ package com.ally.invoicify.controllers;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -30,10 +32,11 @@ public class StatusBillingRecord {
     }
 
     @PutMapping("{recordId}")
-    public BillingRecord updateStatus(@PathVariable long recordId, @RequestHeader String status ){
+    public BillingRecord updateStatus(@PathVariable long recordId, @RequestHeader String status) {
         billingRecord = recordRepository.findOne(recordId);
         billingRecord.setStatus(status);
-         return billingRecord;
+        recordRepository.save(billingRecord);
+        return billingRecord;
     }
 
 }
