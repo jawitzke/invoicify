@@ -33,7 +33,8 @@ public class StatusBillingRecord {
     public BillingRecord updateStatus(@PathVariable long recordId, @RequestHeader String status ){
         billingRecord = recordRepository.findOne(recordId);
         billingRecord.setStatus(status);
-         return billingRecord;
+        recordRepository.save(billingRecord);
+        return billingRecord;
     }
 
 }
