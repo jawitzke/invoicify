@@ -5,6 +5,7 @@ public class Alert {
     private Company client;
     private String description;
     private String message;
+    private Boolean overdue;
 
     public Company getClient() {
         return client;
@@ -28,6 +29,14 @@ public class Alert {
 
     public void setMessage(String message){
         this.message=message;
+    }
+
+    public Boolean isOverdue(){
+        return overdue;
+    }
+
+    public void setOverdue(Boolean overdue){
+        this.overdue=overdue;
     }
 
 }
