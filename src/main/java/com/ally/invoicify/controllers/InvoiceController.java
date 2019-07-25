@@ -44,6 +44,7 @@ public class InvoiceController {
 		Date now = new Date(nowish);
 		Invoice invoice = new Invoice();
 		invoice.setInvoiceDescription(invoiceView.getInvoiceDescription());
+		invoice.setDueDate(invoiceView.getDueDate());
 		
 		List<InvoiceLineItem> items = new ArrayList<InvoiceLineItem>();
 		for (BillingRecord record : records) {
