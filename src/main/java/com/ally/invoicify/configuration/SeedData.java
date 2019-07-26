@@ -7,18 +7,17 @@ import com.ally.invoicify.models.Company;
 import com.ally.invoicify.models.FlatFeeBillingRecord;
 import com.ally.invoicify.models.RateBasedBillingRecord;
 import com.ally.invoicify.models.User;
+import com.ally.invoicify.models.UserTypes;
 import com.ally.invoicify.repositories.BillingRecordRepository;
 import com.ally.invoicify.repositories.CompanyRepository;
 import com.ally.invoicify.repositories.UserRepository;
-
-import com.ally.invoicify.models.User.Types;
 
 @Configuration
 public class SeedData {
 
 	public SeedData(BillingRecordRepository recordRepository, CompanyRepository companyRepository,
 			UserRepository userRepository, PasswordEncoder encoder) {
-		User admin = userRepository.save(new User("admin", encoder.encode("admin"), Types.ADMIN));
+		User admin = userRepository.save(new User("admin", encoder.encode("admin"), UserTypes.admin));
 
 		Company ajax = companyRepository.save(new Company("AJAX Ltd."));
 		Company lomax = companyRepository.save(new Company("Lomax Brothers, LLC"));
