@@ -16,7 +16,7 @@ public class SeedData {
 
 	public SeedData(BillingRecordRepository recordRepository, CompanyRepository companyRepository,
 			UserRepository userRepository, PasswordEncoder encoder) {
-		User admin = userRepository.save(new User("admin", encoder.encode("admin")));
+		User admin = userRepository.save(new User("admin", encoder.encode("admin"), "admin"));
 
 		Company ajax = companyRepository.save(new Company("AJAX Ltd."));
 		Company lomax = companyRepository.save(new Company("Lomax Brothers, LLC"));

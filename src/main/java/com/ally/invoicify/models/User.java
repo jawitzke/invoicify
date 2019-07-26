@@ -29,12 +29,16 @@ public class User implements UserDetails {
 	@Column(nullable = false, unique = true)
 	private String username;
 
+	@Column(nullable = false)
+	private String type;
+
 	public User() {
 	}
 
-	public User(String username, String password) {
+	public User(String username, String password, String type) {
 		this.username = username;
 		this.password = password;
+		this.type=type;
 	}
 
 	@Override
@@ -86,6 +90,14 @@ public class User implements UserDetails {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getType(){
+		return type;
+	}
+
+	public void setType(String type){
+		this.type=type;
 	}
 
 }
