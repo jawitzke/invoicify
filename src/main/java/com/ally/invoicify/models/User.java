@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 // user is a reserved word in psql so we change the table name to avoid issues
-@Table(name="app_user")
+@Table(name = "app_user")
 public class User implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -29,10 +29,18 @@ public class User implements UserDetails {
 	@Column(nullable = false, unique = true)
 	private String username;
 
-	public enum Types{
-		ADMIN,
-		ALLY_USER,
-		CLIENT
+	public enum Types {
+		ADMIN("admin"), ALLY_USER("ally"), CLIENT("client");
+
+		private String type;
+
+		Types(String type) {
+			this.type = type;
+		}
+
+		public String getType() {
+			return type;
+		}
 	}
 
 	@Column(nullable = false)
@@ -44,7 +52,7 @@ public class User implements UserDetails {
 	public User(String username, String password, Types type) {
 		this.username = username;
 		this.password = password;
-		this.type=type;
+		this.type = type;
 	}
 
 	@Override
@@ -98,12 +106,12 @@ public class User implements UserDetails {
 		this.username = username;
 	}
 
-	public Types getType(){
+	public Types getType() {
 		return type;
 	}
 
-	public void setType(Types type){
-		this.type=type;
+	public void setType(Types type) {
+		this.type = type;
 	}
 
 }
