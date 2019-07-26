@@ -29,13 +29,19 @@ public class User implements UserDetails {
 	@Column(nullable = false, unique = true)
 	private String username;
 
+	public enum Types{
+		ADMIN,
+		ALLY_USER,
+		CLIENT
+	}
+
 	@Column(nullable = false)
-	private String type;
+	private Types type;
 
 	public User() {
 	}
 
-	public User(String username, String password, String type) {
+	public User(String username, String password, Types type) {
 		this.username = username;
 		this.password = password;
 		this.type=type;
@@ -92,11 +98,11 @@ public class User implements UserDetails {
 		this.username = username;
 	}
 
-	public String getType(){
+	public Types getType(){
 		return type;
 	}
 
-	public void setType(String type){
+	public void setType(Types type){
 		this.type=type;
 	}
 

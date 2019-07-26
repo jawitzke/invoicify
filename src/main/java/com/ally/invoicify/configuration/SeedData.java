@@ -11,12 +11,14 @@ import com.ally.invoicify.repositories.BillingRecordRepository;
 import com.ally.invoicify.repositories.CompanyRepository;
 import com.ally.invoicify.repositories.UserRepository;
 
+import com.ally.invoicify.models.User.Types;
+
 @Configuration
 public class SeedData {
 
 	public SeedData(BillingRecordRepository recordRepository, CompanyRepository companyRepository,
 			UserRepository userRepository, PasswordEncoder encoder) {
-		User admin = userRepository.save(new User("admin", encoder.encode("admin"), "admin"));
+		User admin = userRepository.save(new User("admin", encoder.encode("admin"), Types.ADMIN));
 
 		Company ajax = companyRepository.save(new Company("AJAX Ltd."));
 		Company lomax = companyRepository.save(new Company("Lomax Brothers, LLC"));
