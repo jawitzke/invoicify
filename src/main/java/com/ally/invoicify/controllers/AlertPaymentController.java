@@ -37,14 +37,14 @@ public class AlertPaymentController {
             LocalDate dueNow = billingDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate compareDue = dueNow.minusDays(2);
             // if the current date is past the billing date
-            if ((now.compareTo(billingDate) > 0) && (billingRecord.getStatus().equals("unpaid"))) {
+            if ((now.compareTo(billingDate) > 0) && (billingRecord.getStatus().equals("Unpaid"))) {
                 
                 alert.setClient(billingRecord.getClient());
                 alert.setDescription(billingRecord.getDescription());
                 alert.setMessage("No payment recorded since due date of " + billingRecord.getDueDate() + ".");
                 alert.setOverdue(true);
                 alertList.add(alert);
-            } else if((compareDue.isBefore(localNow)) && billingRecord.getStatus().equals("unpaid")){
+            } else if((compareDue.isBefore(localNow)) && billingRecord.getStatus().equals("Unpaid")){
                 // add if to see if within two days of  billDate
                 alert.setClient(billingRecord.getClient());
                 alert.setDescription(billingRecord.getDescription());
