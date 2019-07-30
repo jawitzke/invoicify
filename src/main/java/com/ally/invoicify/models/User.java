@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.OneToOne;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,6 +32,9 @@ public class User implements UserDetails {
 
 	@Column(nullable = false)
 	private String type;
+
+	@OneToOne
+	private Company company;
 
 	public User() {
 	}
@@ -98,6 +102,14 @@ public class User implements UserDetails {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 
 }
