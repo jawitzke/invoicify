@@ -30,10 +30,10 @@ public class BillingRecordController {
 	}
 
 	@DeleteMapping("{recordId}")
-	public String voidRecord(@PathVariable long recordId, Authentication auth){
+	public BillingRecord voidRecord(@PathVariable long recordId, Authentication auth){
 		BillingRecord billingRecord = recordRepository.findOne(recordId);
 		recordRepository.delete(billingRecord);
-		return "Successfully deleted billing record with id: " + recordId;
+		return billingRecord;
 	}
 	
 }
