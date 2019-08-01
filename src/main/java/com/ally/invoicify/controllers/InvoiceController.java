@@ -69,6 +69,18 @@ public class InvoiceController {
 	public List<Invoice> list() {
 		return invoiceRepository.findAll();
 	}
+
+	@GetMapping("/company/{companyId}")
+	public List<Invoice> getCompanyRecords(@PathVariable long companyId) {
+		List<Invoice> invoices = invoiceRepository.findAll();
+		List<Invoice> companyInvoices = new ArrayList<Invoice>();
+		for (Invoice invoice : invoices) {
+			if(invoice.getCompany().getId().equals(companyId)) {
+				companyInvoices.add(invoice);
+			}
+		}
+		return companyInvoices;
+	}
 	
 }
 
